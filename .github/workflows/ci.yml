@@ -1,0 +1,25 @@
+name: "Ci-Flow"
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+  
+jobs:
+  simple-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "checkout repo"
+        uses: actions/checkout@v6
+        
+      - name: "set nodejs env"
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+        
+      - name: "install depencies"
+        run: npm ci
+        
+      - name: "running simple script"
+        run: npm test
