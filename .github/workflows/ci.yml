@@ -5,6 +5,10 @@ on:
     branches: ["main"]
   workflow_dispatch:
   
+defaults:
+  run:
+    working-directory: ./app
+  
 jobs:
   simple-deployment:
     runs-on: ubuntu-latest
